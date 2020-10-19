@@ -1,0 +1,54 @@
+{
+  "main" : "bootloader.js",
+  "install": "config/self/self.json",
+  "modules" : {
+    "default" : {
+      "slug": "default",
+      "protocol": "http",
+      "server": "127.0.0.1",
+      "port": 5000,
+      "git": {
+        "repositoryName": "city-service-default",
+        "url": "github.com/s1lv3rsph3r3/city-service-default.git"
+      }
+    },
+    "postalManager": {
+      "slug": "postal-manager",
+      "protocol": "http",
+      "server": "127.0.0.1",
+      "port": 5000,
+      "git": {
+        "repositoryName": "city-service-postal-manager",
+        "url": "github.com/s1lv3rsph3r3/city-service-postal-manager.git"
+      }
+    },
+    "localCallback": {
+      "slug": "local-callback",
+      "protocol": "http",
+      "port": 5000,
+      "git": {
+        "repositoryName": "city-service-local-callback",
+        "url": "github.com/s1lv3rsph3r3/city-service-local-callback"
+      }
+    },
+    "pdfGenerator": {
+      "slug": "pdf-generator",
+      "protocol": "http",
+      "port": 5000,
+      "git": {
+        "repositoryName": "city-service-pdf-generator",
+        "url": "github.com/s1lv3rsph3r3/city-service-pdf-generator.git"
+      }
+    },
+    "example": {
+      "slug": "example",
+      "protocol": "http",
+      "server": "127.0.0.1",
+      "port": 5000,
+      "git": {
+        "repositoryName": "city-service-example",
+        "url": "github.com/s1lv3rsph3r3/city-service-example.git"
+      }
+    }
+  }
+}

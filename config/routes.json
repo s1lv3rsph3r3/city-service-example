@@ -1,0 +1,10 @@
+{
+  "baseDir" : "{{moduleDir}}/{{moduleName}}/routingProviders/",
+  "routes" : "web.js",
+  "events" : "events.js",
+  "api" : {
+    "filename" : "api.js",
+    "prefix" : "api",
+    "version" : 1
+  }
+}

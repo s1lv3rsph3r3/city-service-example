@@ -1,0 +1,8 @@
+{
+  "app" : {
+    "ExampleMiddlewareProvider" : [
+      "example"
+    ]
+  },
+  "rootDir" : "./globalMiddlewareProviders"
+}
