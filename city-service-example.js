@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const shell = require('child_process').execSync;
+const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const commander = require('commander');
@@ -7,9 +7,20 @@ const { cloneDeep } = require('lodash');
 const chalk = require('chalk');
 const packageJson = require('./package.json');
 
-(async () => {
-  const src = './applicationModules';
+function shCommand(cmd) {
+  return new Promise((resolve, reject) => {
+    exec(cmd, (err, stdout, stderr) => {
+      if (err) {
+        reject(err);
+      } else {
+        console.log(stdout, stderr);
+        resolve({});
+      }
+    });
+  });
+}
 
+(async () => {
   const currentNodeVersion = process.versions.node;
   const scriptName = 'Create City Blueprint';
   const semver = currentNodeVersion.split('.');
@@ -27,30 +38,41 @@ const packageJson = require('./package.json');
   let projectName = '';
   new commander.Command(packageJson.name)
     .version(packageJson.version)
-    .arguments('<project-directory>')
-    .usage(`${chalk.green('<project-directory>')}`)
-    .action((name) => {
-      projectName = name;
-    })
+    .usage('')
     .on('--help', () => {
       console.log();
       console.log(
-        `Only ${chalk.green('<project-directory>')} is required.`,
+        `No arguments are required.`,
       );
       console.log();
     })
     .parse(process.argv);
-  const baseDir = path.resolve();
-  const rootDir = path.resolve(`applicationModulesCopy/${projectName}`);
 
-  try {
-    shell(`cp -r ${src}/* "${rootDir}"`);
-  } catch (e) {
+  const baseDir = path.resolve();
+  const rootDir = path.resolve('applicationModules');
+
+  await shCommand(`mkdir "${rootDir}"`).then(() => {
+    console.log(
+      `Created ${chalk.green(`${rootDir}`)} without error.`,
+    );
+  }).catch(() => {
     console.error(
-      `${chalk.bgRed('ERR')}: while attempting to setup framework.`,
+      `${chalk.bgRed('ERR')}: while attempting to make module directory.`,
     );
     process.exit(1);
-  }
+  });
+  const srcFiles = path.resolve(__dirname, 'applicationModules/example');
+  await shCommand(`cp -r "${srcFiles}" "${rootDir}"`).then(() => {
+    console.log(
+      `Created city framework version ${chalk.green(`${packageJson.version}`)} successfully in ${chalk.green(`${rootDir}`)}`,
+    );
+  }).catch((err) => {
+    console.error(
+      `${chalk.bgRed('ERR')}: while attempting to setup the service.`,
+    );
+    process.exit(1);
+  });
+
   console.log(
     `Created city service example version ${chalk.green(`${packageJson.version}`)} successfully in ${chalk.green(`${rootDir}`)}`,
   );
@@ -58,18 +80,12 @@ const packageJson = require('./package.json');
   // eslint-disable-next-line import/no-dynamic-require
   const selfJson = require(`${baseDir}/config/self/self.json`);
   // eslint-disable-next-line global-require
-  const modulesConfig = require(`${baseDir}/config/modules.json`);
+  // const modulesConfig = require(`${baseDir}/config/modules.json`);
 
   // eslint-disable-next-line global-require
   const citySelfJson = require('./config/self/self.json');
   // eslint-disable-next-line global-require
   const cityModulesConfig = require('./config/modules.json');
-
-  // console.log(modulesConfig, cityModulesConfig);
-
-  // console.log(selfJson, citySelfJson);
-
-  // console.log(citySelfJson.install[0]);
 
   // Update the self.json file with the module installation
   selfJson.install.push(citySelfJson.install[0]);
@@ -88,9 +104,10 @@ const packageJson = require('./package.json');
   // Update the self/self.json of the city blueprint
   selfJson.modules.example = modulesExampleObject.modules.example;
 
-  await fs.writeFileSync(`${baseDir}/config/self/self.json`, JSON.stringify(selfJson));
+  await fs.writeFileSync(`${baseDir}/config/self/self.json`, JSON.stringify(selfJson, null, 2));
   // Update the modules folder of the city blueprint with dependency modules
 })();
 
 // TODO: Update the modules.json file with an object for the 'example' module
 // TODO: Console output for the .env file updates
+// TODO: Update the
