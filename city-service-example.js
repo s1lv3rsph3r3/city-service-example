@@ -3,7 +3,7 @@ const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const commander = require('commander');
-const { cloneDeep } = require('lodash');
+// const { cloneDeep } = require('lodash');
 const chalk = require('chalk');
 const packageJson = require('./package.json');
 
@@ -35,7 +35,6 @@ function shCommand(cmd) {
     process.exit(1);
   }
 
-  let projectName = '';
   new commander.Command(packageJson.name)
     .version(packageJson.version)
     .usage('')
@@ -67,6 +66,7 @@ function shCommand(cmd) {
       `Created city framework version ${chalk.green(`${packageJson.version}`)} successfully in ${chalk.green(`${rootDir}`)}`,
     );
   }).catch((err) => {
+    console.log(err);
     console.error(
       `${chalk.bgRed('ERR')}: while attempting to setup the service.`,
     );
@@ -85,24 +85,25 @@ function shCommand(cmd) {
   // eslint-disable-next-line global-require
   const citySelfJson = require('./config/self/self.json');
   // eslint-disable-next-line global-require
-  const cityModulesConfig = require('./config/modules.json');
+  // const cityModulesConfig = require('./config/modules.json');
 
   // Update the self.json file with the module installation
   selfJson.install.push(citySelfJson.install[0]);
+  selfJson.modules.example = citySelfJson.modules.example;
 
   // Take value from the modules folder
-  const port = 5000;
-  const server = '127.0.0.1';
-  const protocol = 'http';
+  // const port = 5000;
+  // const server = '127.0.0.1';
+  // const protocol = 'http';
 
   // Take the value from the modules folder of this service
-  const modulesExampleObject = cloneDeep(cityModulesConfig);
-  modulesExampleObject.modules.example.port = port;
-  modulesExampleObject.modules.example.server = server;
-  modulesExampleObject.modules.example.protocol = protocol;
+  // const modulesExampleObject = cloneDeep(cityModulesConfig);
+  // modulesExampleObject.modules.example.port = port;
+  // modulesExampleObject.modules.example.server = server;
+  // modulesExampleObject.modules.example.protocol = protocol;
 
   // Update the self/self.json of the city blueprint
-  selfJson.modules.example = modulesExampleObject.modules.example;
+  // selfJson.modules.example = modulesExampleObject.modules.example;
 
   await fs.writeFileSync(`${baseDir}/config/self/self.json`, JSON.stringify(selfJson, null, 2));
   // Update the modules folder of the city blueprint with dependency modules
