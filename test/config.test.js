@@ -1,7 +1,7 @@
-const { BRC487 } = require('@s1lv3rsph3r3/central');
 const fs = require('fs');
+const path = require('path');
 
-const absolutePathToBaseProject = BRC487.getAbsolutePathToBaseProject();
+const absolutePathToBaseProject = path.resolve('..');
 const routeConfig = require('../config/routes.json');
 const applicationModulesConfig = require('../config/applicationModules.json');
 const modulesConfig = require('../config/modules.json');

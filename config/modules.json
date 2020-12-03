@@ -1,34 +1,5 @@
 {
   "main" : "bootloader.js",
   "install": "config/self/self.json",
-  "modules" : {
-    "default" : {
-      "slug": "default",
-      "protocol": "http",
-      "server": "127.0.0.1",
-      "port": 5000
-    },
-    "postalManager": {
-      "slug": "postal-manager",
-      "protocol": "http",
-      "server": "127.0.0.1",
-      "port": 5000
-    },
-    "localCallback": {
-      "slug": "local-callback",
-      "protocol": "http",
-      "port": 5000
-    },
-    "pdfGenerator": {
-      "slug": "pdf-generator",
-      "protocol": "http",
-      "port": 5000
-    },
-    "example": {
-      "slug": "example",
-      "protocol": "http",
-      "server": "127.0.0.1",
-      "port": 5000
-    }
-  }
+  "modules" : {}
 }

@@ -2,5 +2,12 @@
   "install": [
     "example"
   ],
-  "modules": {}
+  "modules": {
+    "example": {
+      "slug": "example",
+      "protocol": "{{protocol}}",
+      "server": "{{host}}",
+      "port": "{{port}}"
+    }
+  }
 }
