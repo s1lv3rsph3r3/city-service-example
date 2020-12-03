@@ -29,7 +29,7 @@
     "eslint-plugin-import": "^2.18.2"
   },
   "dependencies": {
-    "@s1lv3rsph3r3/metropolitan": "^1.0.29",
+    "@s1lv3rsph3r3/metropolitan": "^1.0.30",
     "axios": "^0.19.2",
     "body-parser": "latest",
     "chalk": "^4.1.0",
