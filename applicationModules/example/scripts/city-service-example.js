@@ -62,7 +62,7 @@ function shCommand(cmd) {
   });
   const baseProjectPath = path.resolve(__dirname, '../../../');
   const srcFiles = path.resolve(baseProjectPath, 'applicationModules/example');
-  await shCommand(`cp -r "${srcFiles}" "${rootDir}" & disown`).then(() => {
+  await shCommand(`cp -r "${srcFiles}" "${rootDir}"`).then(() => {
     console.log(
       `Created city framework version ${chalk.green(`${packageJson.version}`)} successfully in ${chalk.green(`${rootDir}`)}`,
     );
@@ -116,7 +116,7 @@ function shCommand(cmd) {
 
   let projectPackageJson;
   try{
-    projectPackageJson = require(`"${baseDir}/package.json"`);
+    projectPackageJson = require(`${baseDir}/package.json`);
   } catch (e) {
     console.log('Package json does not exist');
   }
