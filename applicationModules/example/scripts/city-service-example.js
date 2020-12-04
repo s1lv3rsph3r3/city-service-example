@@ -198,10 +198,10 @@ function shCommand(cmd) {
   }
 
   // Flush the package.json to file
-  await fs.writeFileSync(`${rootDir}/package.json`, JSON.stringify(projectPackageJson, null, 2));
+  await fs.writeFileSync(`${baseDir}/package.json`, JSON.stringify(projectPackageJson, null, 2));
 
   // NPM install all dependencies required for this project
-  await shCommand(`cd "${rootDir}" && npm install`).then(() => {
+  await shCommand(`cd "${baseDir}" && npm install`).then(() => {
     // successfully installed the project
     console.log('Finished install of all dependencies');
   }).catch((err) => {
