@@ -2,31 +2,26 @@
   "name": "city-service-example",
   "version": "1.0.0",
   "description": "A simple javascript application.",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "start": "node index.js"
-  },
-  "bin": {
-    "city-service-example": "applicationModules/example/scripts/city-service-example.js"
+  "homepage": "https://github.com/s1lv3rsph3r3/city-service-example#readme",
+  "bugs": {
+    "url": "https://github.com/s1lv3rsph3r3/city-service-example/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/s1lv3rsph3r3/city-service-example.git"
   },
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/s1lv3rsph3r3/city-service-example/issues"
+  "author": "",
+  "main": "index.js",
+  "bin": {
+    "city-service-example": "applicationModules/example/scripts/city-service-example.js"
   },
-  "homepage": "https://github.com/s1lv3rsph3r3/city-service-example#readme",
-  "devDependencies": {
-    "@jest/environment": "latest",
-    "jest": "^25.4.0",
-    "supertest": "^4.0.2",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
   },
   "dependencies": {
     "@s1lv3rsph3r3/metropolitan": "^1.0.30",
@@ -47,7 +42,12 @@
     "socket.io": "^2.3.0",
     "uuid": "^8.3.1"
   },
-  "directories": {
-    "test": "test"
+  "devDependencies": {
+    "@jest/environment": "latest",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^25.4.0",
+    "supertest": "^4.0.2"
   }
 }
