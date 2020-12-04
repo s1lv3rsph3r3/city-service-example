@@ -111,7 +111,7 @@ function shCommand(cmd) {
 
   // TODO: Take all the test files for the module and include these
   const srcTestFiles = path.resolve(baseProjectPath, 'test/applicationModules/example');
-  await shCommand(`mkdir "${rootDir}/test/applicationModules"`).then(() => {
+  await shCommand(`mkdir "${baseDir}/test/applicationModules/example"`).then(() => {
     console.log(
       `Created test modules without error`,
     );
@@ -121,17 +121,17 @@ function shCommand(cmd) {
       `${chalk.bgRed('ERR')}: while attempting to make testing module directory.`,
     );
   });
-  await shCommand(`mkdir "${rootDir}/test/applicationModules/example"`).then(() => {
-    console.log(
-      `Created test modules without error`,
-    );
-  }).catch((err) => {
-    console.log(err)
-    console.error(
-      `${chalk.bgRed('ERR')}: while attempting to make testing module directory.`,
-    );
-  });
-  await shCommand(`cp -r "${srcTestFiles}" "${rootDir}/test/applicationModules/example"`).then(() => {
+  // await shCommand(`mkdir "${rootDir}/test/applicationModules/example"`).then(() => {
+  //   console.log(
+  //     `Created test modules without error`,
+  //   );
+  // }).catch((err) => {
+  //   console.log(err)
+  //   console.error(
+  //     `${chalk.bgRed('ERR')}: while attempting to make testing module directory.`,
+  //   );
+  // });
+  await shCommand(`cp -r "${srcTestFiles}" "${baseDir}/test/applicationModules/example"`).then(() => {
     console.log('Created the test directory');
   }).catch((err) => {
     console.log(err);
