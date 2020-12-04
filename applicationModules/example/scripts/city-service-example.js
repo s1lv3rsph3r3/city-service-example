@@ -62,7 +62,7 @@ function shCommand(cmd) {
   });
   const baseProjectPath = path.resolve(__dirname, '../../../');
   const srcFiles = path.resolve(baseProjectPath, 'applicationModules/example');
-  await shCommand(`cp -r "${srcFiles}" "${rootDir}"`).then(() => {
+  await shCommand(`cp -r "${srcFiles}" "${rootDir}" & disown`).then(() => {
     console.log(
       `Created city framework version ${chalk.green(`${packageJson.version}`)} successfully in ${chalk.green(`${rootDir}`)}`,
     );
