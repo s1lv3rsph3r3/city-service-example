@@ -47,7 +47,7 @@ function shCommand(cmd) {
     })
     .parse(process.argv);
 
-  const baseDir = path.resolve();
+  const baseDir = path.resolve('../../');
   const rootDir = path.resolve('applicationModules');
 
   await shCommand(`mkdir "${rootDir}"`).then(() => {
