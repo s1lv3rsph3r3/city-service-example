@@ -60,7 +60,7 @@ function shCommand(cmd) {
     );
     process.exit(1);
   });
-  const baseProjectPath = path.resolve(__dirname, '../../');
+  const baseProjectPath = path.resolve(__dirname, '../../../');
   const srcFiles = path.resolve(baseProjectPath, 'applicationModules/example');
   await shCommand(`cp -r "${srcFiles}" "${rootDir}"`).then(() => {
     console.log(
