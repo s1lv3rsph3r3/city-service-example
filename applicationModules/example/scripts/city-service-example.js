@@ -47,7 +47,7 @@ function shCommand(cmd) {
     })
     .parse(process.argv);
 
-  const baseDir = path.resolve('../../');
+  const baseDir = path.resolve();
   const rootDir = path.resolve(baseDir, 'applicationModules');
 
   await shCommand(`mkdir "${rootDir}"`).then(() => {
@@ -60,7 +60,8 @@ function shCommand(cmd) {
     );
     process.exit(1);
   });
-  const srcFiles = path.resolve(__dirname, 'applicationModules/example');
+  const baseProjectPath = path.resolve(__dirname, '../../');
+  const srcFiles = path.resolve(baseProjectPath, 'applicationModules/example');
   await shCommand(`cp -r "${srcFiles}" "${rootDir}"`).then(() => {
     console.log(
       `Created city framework version ${chalk.green(`${packageJson.version}`)} successfully in ${chalk.green(`${rootDir}`)}`,
