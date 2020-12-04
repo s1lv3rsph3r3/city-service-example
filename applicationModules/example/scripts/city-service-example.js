@@ -5,7 +5,7 @@ const fs = require('fs');
 const commander = require('commander');
 // const { cloneDeep } = require('lodash');
 const chalk = require('chalk');
-const packageJson = require('./package.json');
+const packageJson = require('../../../package.json');
 
 function shCommand(cmd) {
   return new Promise((resolve, reject) => {
@@ -83,7 +83,7 @@ function shCommand(cmd) {
   // const modulesConfig = require(`${baseDir}/config/modules.json`);
 
   // eslint-disable-next-line global-require
-  const citySelfJson = require('./config/self/self.json');
+  const citySelfJson = require('../../../config/self/self.json');
   // eslint-disable-next-line global-require
   // const cityModulesConfig = require('./config/modules.json');
 

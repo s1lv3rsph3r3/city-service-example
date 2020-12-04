@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "bin": {
-    "city-service-example": "./city-service-example.js"
+    "city-service-example": "applicationModules/example/scripts/city-service-example.js"
   },
   "repository": {
     "type": "git",
