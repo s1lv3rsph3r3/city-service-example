@@ -105,7 +105,7 @@ function shCommand(cmd) {
   // Update the self/self.json of the city blueprint
   // selfJson.modules.example = modulesExampleObject.modules.example;
 
-  await fs.writeFileSync(`${baseDir}/config/self/self.json`, JSON.stringify(selfJson, null, 2));
+  await fs.writeFileSync(`${baseDir}/config/self/self.json`, `${JSON.stringify(selfJson, null, 2)}\n`);
   // Update the modules folder of the city blueprint with dependency modules
 })();
 
