@@ -110,10 +110,18 @@ function shCommand(cmd) {
   // Update the modules folder of the city blueprint with dependency modules
 
   // TODO: Take all the test files for the module and include these
+  const srcTestFiles = path.resolve(baseProjectPath, 'test/applicationModules/example');
+  await shCommand(`cp -r "${srcTestFiles}" "${rootDir}/test/applicationModules/example"`).then(() => {
+    console.log('Created the test directory');
+  }).catch((err) => {
+    console.log(err);
+    console.error(
+      `${chalk.bgRed('ERR')}: while attempting to copy over the testing files.`,
+    );
+  });
 
-  // TODO: Remember the package json and dependencies
+
   // If the package json exists then we go ahead and run the dependencies
-
   let projectPackageJson;
   try{
     projectPackageJson = require(`${baseDir}/package.json`);
@@ -215,6 +223,6 @@ function shCommand(cmd) {
     process.exit(1);
   });
 
-  // TODO: Remember to install using npm install
+  // TODO: Run a sort-package-json script to organise the package.json
 })();
 // TODO: Console output for the .env file updates
