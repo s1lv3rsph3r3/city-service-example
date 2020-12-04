@@ -131,7 +131,7 @@ function shCommand(cmd) {
       `${chalk.bgRed('ERR')}: while attempting to make testing module directory.`,
     );
   });
-  await shCommand(`cp -r "${srcTestFiles}" "${baseDir}/test/applicationModules/example"`).then(() => {
+  await shCommand(`cp -r "${srcTestFiles}/." "${baseDir}/test/applicationModules/example"`).then(() => {
     console.log('Created the test directory');
   }).catch((err) => {
     console.log(err);
